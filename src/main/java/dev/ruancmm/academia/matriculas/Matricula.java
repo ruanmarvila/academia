@@ -1,7 +1,6 @@
 package dev.ruancmm.academia.matriculas;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +30,7 @@ public class Matricula {
     private Aluno aluno;
 
     @Column(name = "data_matricula")
-    private LocalDateTime dataMatricula;
+    private LocalDate dataMatricula;
 
     @Column(name = "dia_vencimento")
     private Integer diaVencimento;
@@ -45,7 +44,7 @@ public class Matricula {
     @PrePersist
     public void prePersist() {
         if (dataMatricula == null) {
-            dataMatricula = LocalDateTime.now();
+            dataMatricula = LocalDate.now();
         }
     }
 
@@ -65,11 +64,11 @@ public class Matricula {
         this.aluno = aluno;
     }
 
-    public LocalDateTime getDataMatricula() {
+    public LocalDate getDataMatricula() {
         return dataMatricula;
     }
 
-    public void setDataMatricula(LocalDateTime dataMatricula) {
+    public void setDataMatricula(LocalDate dataMatricula) {
         this.dataMatricula = dataMatricula;
     }
 
