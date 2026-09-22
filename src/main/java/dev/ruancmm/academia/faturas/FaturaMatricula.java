@@ -1,9 +1,10 @@
-package dev.ruancmm.academia.matriculas;
+package dev.ruancmm.academia.faturas;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import dev.ruancmm.academia.matriculas.Matricula;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

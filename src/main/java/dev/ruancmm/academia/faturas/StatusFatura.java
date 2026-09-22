@@ -1,4 +1,4 @@
-package dev.ruancmm.academia.matriculas;
+package dev.ruancmm.academia.faturas;
 
 public enum StatusFatura {
     ABERTA, PAGA, CANCELADA, VENCIDA;
