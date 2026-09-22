@@ -24,8 +24,9 @@ public class AlunoService {
         return AlunoResponse.fromEntity(alunoSalvo);
     }
 
-    public Page<AlunoResponse> listar(Pageable pageable) {
-        return alunoRepository.findAll(pageable).map(AlunoResponse::fromEntity);
+    public Page<AlunoResponse> listar(AlunoFilterRequest filtro, Pageable pageable) {
+        return alunoRepository.findAll(AlunoSpecification.comFiltros(filtro), pageable)
+            .map(AlunoResponse::fromEntity);
     }
 
     public AlunoResponse buscarPorId(Long id) {
