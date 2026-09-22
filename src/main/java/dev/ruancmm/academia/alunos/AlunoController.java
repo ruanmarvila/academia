@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/alunos")
 public class AlunoController {
@@ -24,7 +26,7 @@ public class AlunoController {
 
     @PostMapping("/cadastrar")
     @ResponseStatus(HttpStatus.CREATED)
-    public AlunoResponse cadastrar(@RequestBody AlunoRequest request) {
+    public AlunoResponse cadastrar(@RequestBody @Valid AlunoRequest request) {
         return alunoService.cadastrar(request);
     }
 
@@ -39,7 +41,7 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public AlunoResponse atualizar(@PathVariable Long id, @RequestBody AlunoRequest request) {
+    public AlunoResponse atualizar(@PathVariable Long id, @RequestBody @Valid AlunoRequest request) {
         return alunoService.atualizar(id, request);
     }
 

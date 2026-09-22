@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import dev.ruancmm.academia.core.exception.RegraNegocioException;
+
 @Service
 public class AlunoService {
     private final AlunoRepository alunoRepository;
@@ -14,7 +16,7 @@ public class AlunoService {
 
     public AlunoResponse cadastrar(AlunoRequest request) {
         if (request.email() != null && alunoRepository.existsByEmail(request.email())) {
-            throw new RuntimeException("Já existe um aluno cadastrado com esse e-mail.");
+            throw new RegraNegocioException("Já existe um aluno cadastrado com esse e-mail.");
         }
 
         Aluno aluno = request.toEntity();
@@ -45,6 +47,6 @@ public class AlunoService {
 
     private Aluno buscarEntidadePorId(Long id) {
         return alunoRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Aluno não encontrado."));
+            .orElseThrow(() -> new RegraNegocioException("Aluno não encontrado."));
     }
 }
